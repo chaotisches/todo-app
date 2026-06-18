@@ -14,14 +14,16 @@ export function addTodo(text) {
 
 export function toggleTodo(id) {
   const todo = todos.find(t => t.id === id)
-  if (todo) todo.done = !todo.done
+  if (!todo) return null
+  todo.done = !todo.done
   return todo
 }
 
 export function editTodo(id, newText) {
   if (!newText || !newText.trim()) return null
   const todo = todos.find(t => t.id === id)
-  if (todo) todo.text = newText.trim()
+  if (!todo) return null
+  todo.text = newText.trim()
   return todo
 }
 
